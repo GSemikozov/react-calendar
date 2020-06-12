@@ -70,6 +70,7 @@ const StyledDay = styled.div`
             pointer-events: none;
             cursor: default;
         `}
+
     ${(props) =>
         props.isActive &&
         css`
@@ -91,6 +92,7 @@ const DayNumber = styled.span`
     color: var(--grey);
     z-index: 2;
     box-sizing: border-box;
+
     ${(props) =>
         props.isActive &&
         css`
