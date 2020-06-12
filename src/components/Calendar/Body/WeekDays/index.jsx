@@ -17,11 +17,11 @@ const StyledWeekDay = styled.div`
 
 export const WeekDays = () => {
     const [state] = useContext(StoreContext);
-    const { currentMonth } = state;
+    const { currentDate } = state;
     const dateFormat = "EEE";
     const days = [];
 
-    let startDate = startOfWeek(currentMonth);
+    let startDate = startOfWeek(currentDate);
 
     for (let i = 0; i < 7; i++) {
         days.push(

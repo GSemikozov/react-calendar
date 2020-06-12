@@ -1,0 +1,5 @@
+export const ADD_EVENT = "ADD_EVENT";
+export const DEL_EVENT = "DEL_EVENT";
+export const UPDATE_EVENT = "UPDATE_EVENT";
+export const CHANGE_MONTH = "CHANGE_MONTH";
+export const REMOVE_ALL_MONTH_EVENTS = "REMOVE_ALL_MONTH_EVENTS";

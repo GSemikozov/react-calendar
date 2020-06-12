@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { format, eachDayOfInterval, startOfMonth, endOfMonth, getTime } from "date-fns";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import * as actionTypes from "../../../store/actions";
 
 import { StoreContext } from "../../../store";
 
@@ -21,16 +22,24 @@ const Button = styled.div`
     color: var(--blue);
     margin: 0 0 0 4px;
     cursor: pointer;
+
+    ${(props) =>
+        props.disabled &&
+        css`
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: default;
+        `}
 `;
 
 export const Footer = () => {
     const [state, dispatch] = useContext(StoreContext);
     const [monthEvents, setMonthEvents] = useState([]);
-    const { currentMonth } = state;
+    const { currentDate } = state;
     const getCurrentMonthEvents = () => {
         const dates = eachDayOfInterval({
-            start: startOfMonth(currentMonth),
-            end: endOfMonth(currentMonth),
+            start: startOfMonth(currentDate),
+            end: endOfMonth(currentDate),
         });
         const events = dates.reduce((result, day) => {
             const dayEvents = state.events.filter((event) => {
@@ -42,9 +51,8 @@ export const Footer = () => {
     };
 
     const removeAllMonthEvents = () => {
-        getCurrentMonthEvents();
         dispatch({
-            type: "REMOVE_ALL_MONTH_EVENTS",
+            type: actionTypes.REMOVE_ALL_MONTH_EVENTS,
             payload: monthEvents,
         });
         setMonthEvents([]);
@@ -52,12 +60,16 @@ export const Footer = () => {
 
     useEffect(() => {
         getCurrentMonthEvents();
-    }, [currentMonth, state]);
+    }, [currentDate, state.events]);
 
     return (
         <StyledFooter>
-            {monthEvents.length} events on {format(currentMonth, "MMMM yyyy")} -
-            <Button type="button" onClick={removeAllMonthEvents}>
+            {monthEvents.length} events on {format(currentDate, "MMMM yyyy")} -
+            <Button
+                type="button"
+                onClick={removeAllMonthEvents}
+                disabled={monthEvents.length === 0}
+            >
                 Remove all
             </Button>
         </StyledFooter>

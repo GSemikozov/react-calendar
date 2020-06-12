@@ -3,19 +3,18 @@ import React, { createContext, useReducer, useMemo } from "react";
 import { reduceReducers } from "../utils";
 import { eventsReducer } from "./reducers/eventsReducer";
 import { monthReducer } from "./reducers/monthReducer";
+import { removeMonthEventsReducer } from "./reducers/removeMonthEventsReducer";
 
 export const StoreContext = createContext(null);
 
-const rootReducer = reduceReducers(eventsReducer, monthReducer);
+const rootReducer = reduceReducers(eventsReducer, monthReducer, removeMonthEventsReducer);
 
 export const StoreContextProvider = ({ children }) => {
     const events = JSON.parse(localStorage.getItem("events")) || [];
     const initialState = {
         events: events,
-        currentMonth: new Date(),
+        currentDate: new Date(),
         selectedDate: new Date(),
-        loading: false,
-        error: null,
     };
     const [state, dispatch] = useReducer(rootReducer, initialState);
 

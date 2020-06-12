@@ -53,11 +53,11 @@ const NavButton = styled.button`
 
 export const Header = ({ setCurrentMonth }) => {
     const [state, dispatch] = useContext(StoreContext);
-    const { currentMonth } = state;
+    const { currentDate } = state;
     const dateFormat = "MMMM yyyy";
 
     const nextMonth = () => {
-        const nextMonth = addMonths(currentMonth, 1);
+        const nextMonth = addMonths(currentDate, 1);
         setCurrentMonth(nextMonth);
         dispatch({
             type: "CHANGE_MONTH",
@@ -66,7 +66,7 @@ export const Header = ({ setCurrentMonth }) => {
     };
 
     const prevMonth = () => {
-        const prevMonth = subMonths(currentMonth, 1);
+        const prevMonth = subMonths(currentDate, 1);
         setCurrentMonth(prevMonth);
         dispatch({
             type: "CHANGE_MONTH",
@@ -86,7 +86,7 @@ export const Header = ({ setCurrentMonth }) => {
     return (
         <StyledHeader>
             <HeaderCol>
-                <Heading>{format(currentMonth, dateFormat)}</Heading>
+                <Heading>{format(currentDate, dateFormat)}</Heading>
             </HeaderCol>
             <HeaderCol>
                 <CalendarNav>

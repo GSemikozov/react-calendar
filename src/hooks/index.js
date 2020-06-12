@@ -19,24 +19,24 @@ export const useFormInput = (initialValue) => {
     };
 };
 
-export const usePopover = () => {
-    const [activePopover, setActivePopover] = useState(false);
-    const refPopover = useRef(null);
+export const useOnClickOutside = () => {
+    const [active, setActive] = useState(false);
+    const ref = useRef(null);
 
     const handleClickAway = (e) => {
-        if (!refPopover.current.contains(e.target)) setActivePopover(false);
+        if (!ref.current.contains(e.target)) setActive(false);
     };
 
-    const togglePopover = () => setActivePopover(!activePopover);
+    const toggle = () => setActive(!active);
 
     useEffect(() => {
-        if (activePopover) document.addEventListener("mousedown", handleClickAway);
+        if (active) document.addEventListener("mousedown", handleClickAway);
         else document.removeEventListener("mousedown", handleClickAway);
 
         return () => {
             document.removeEventListener("mousedown", handleClickAway);
         };
-    }, [activePopover]);
+    }, [active]);
 
-    return { refPopover, activePopover, setActivePopover, togglePopover };
+    return { ref, active, setActive, toggle };
 };

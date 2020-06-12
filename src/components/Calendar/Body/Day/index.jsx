@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-import { usePopover } from "../../../../hooks";
+import { useOnClickOutside } from "../../../../hooks";
 import { EventTag } from "./EventTag";
 import { Form } from "../Form/index";
 
@@ -101,7 +101,7 @@ const DayNumber = styled.span`
 
 export const Day = ({ day, fullDate, isActive, isSameMonth, events, onClick }) => {
     const [selectedId, setSelectedId] = useState();
-    const { refPopover, activePopover, togglePopover } = usePopover();
+    const { ref: refPopover, active: activePopover, toggle: togglePopover } = useOnClickOutside();
 
     const handleShowForm = () => {
         onClick();

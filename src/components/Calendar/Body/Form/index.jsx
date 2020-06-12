@@ -1,40 +1,18 @@
 import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import * as actionTypes from "../../../../store/actions";
 
 import { StoreContext } from "../../../../store";
 import { useFormInput } from "../../../../hooks";
 
+import { ButtonAdd, ButtonClose, ButtonDelete, ButtonUpdate } from "./Button";
+import { Input } from "./Input";
+import { Textarea } from "./Textarea";
+
 const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
-`;
-
-const Input = styled.input`
-    height: 34px;
-    background: var(--lighter-blue);
-    color: var(--input-color);
-    line-height: 1.2;
-    border-radius: 4px;
-    padding: 0.25rem 0.5rem;
-    outline: none;
-    box-shadow: none;
-    border: none;
-    box-sizing: border-box;
-    margin-bottom: 0.75rem;
-`;
-
-const Textarea = styled.textarea`
-    min-height: 110px;
-    background: var(--lighter-blue);
-    color: var(--input-color);
-    line-height: 1.2;
-    border-radius: 4px;
-    padding: 0.25rem 0.5rem;
-    outline: none;
-    box-shadow: none;
-    border: none;
-    box-sizing: border-box;
 `;
 
 const ButtonsWrap = styled.div`
@@ -44,47 +22,7 @@ const ButtonsWrap = styled.div`
     margin-top: 10px;
 `;
 
-const Button = styled.button`
-    outline: none;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    transition: 0.3s opacity;
-
-    &:hover {
-        opacity: 0.8;
-    }
-`;
-
-const ButtonClose = styled(Button)`
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    font-size: 1.2rem;
-    line-height: 1;
-    padding: 3px;
-    box-sizing: border-box;
-    width: 24px;
-    height: 24px;
-    background: var(--white);
-    border-radius: 50%;
-    text-align: center;
-`;
-
-const ButtonDelete = styled(Button)`
-    color: var(--red);
-`;
-
-const ButtonAdd = styled(Button)`
-    color: var(--blue);
-`;
-
-const ButtonUpdate = styled(ButtonAdd)``;
-
-export const Form = ({ date, selected, setShowForm, children }) => {
+export const Form = ({ date, selected, setShowForm }) => {
     const name = useFormInput("");
     const time = useFormInput("");
     const desc = useFormInput("");
@@ -110,7 +48,7 @@ export const Form = ({ date, selected, setShowForm, children }) => {
             description: desc.value,
         };
         dispatch({
-            type: "ADD_EVENT",
+            type: actionTypes.ADD_EVENT,
             payload: event,
         });
         onEventHideForm();
@@ -119,7 +57,7 @@ export const Form = ({ date, selected, setShowForm, children }) => {
 
     const delEvent = (id) => {
         dispatch({
-            type: "DEL_EVENT",
+            type: actionTypes.DEL_EVENT,
             payload: id,
         });
     };
@@ -132,7 +70,7 @@ export const Form = ({ date, selected, setShowForm, children }) => {
 
     const updateEvent = (event) => {
         dispatch({
-            type: "UPDATE_EVENT",
+            type: actionTypes.UPDATE_EVENT,
             payload: event,
         });
     };

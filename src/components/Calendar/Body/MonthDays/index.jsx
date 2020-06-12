@@ -25,9 +25,9 @@ const StyledMonthDays = styled.div`
 export const MonthDays = () => {
     const [state] = useContext(StoreContext);
     const { selectedDate } = state;
-    const { currentMonth } = state;
+    const { currentDate } = state;
     const [selectedDay, setSelectedDay] = useState();
-    const monthStart = startOfMonth(currentMonth);
+    const monthStart = startOfMonth(currentDate);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
     const endDate = endOfWeek(monthEnd);
