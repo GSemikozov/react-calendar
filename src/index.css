@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
+/* import only needed animation effects */
+@import "~animate.css/source/_vars.css";
+@import "~animate.css/source/_base.css";
+@import "~animate.css/source/attention_seekers/bounce.css";
+@import "~animate.css/source/bouncing_entrances/bounceIn.css";
+
 :root {
     --black: #000000;
     --white: #ffffff;

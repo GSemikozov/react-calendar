@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import { Animated } from "react-animated-css";
 
 import { useOnClickOutside } from "../../../../hooks";
 import { EventTag } from "./EventTag";
@@ -137,13 +138,19 @@ export const Day = ({ day, fullDate, isActive, isSameMonth, events, onClick }) =
                 )}
             </StyledDay>
             {activePopover && (
-                <StyledPopover ref={refPopover}>
-                    <Form
-                        date={fullDate}
-                        selected={[selectedId, setSelectedId]}
-                        setShowForm={togglePopover}
-                    />
-                </StyledPopover>
+                <Animated
+                    animationIn="bounceIn"
+                    isVisible={activePopover}
+                    style={{ position: "absolute", zIndex: 10 }}
+                >
+                    <StyledPopover ref={refPopover}>
+                        <Form
+                            date={fullDate}
+                            selected={[selectedId, setSelectedId]}
+                            setShowForm={togglePopover}
+                        />
+                    </StyledPopover>
+                </Animated>
             )}
         </DayWrap>
     );
