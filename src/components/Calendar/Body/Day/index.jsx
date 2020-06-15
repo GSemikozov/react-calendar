@@ -87,7 +87,6 @@ const DayNumber = styled.span`
     padding: 4px;
     border-radius: 50%;
     text-align: center;
-    line-height: 16px;
     position: absolute;
     top: 10px;
     right: 10px;
