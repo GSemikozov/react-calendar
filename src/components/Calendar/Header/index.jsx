@@ -51,14 +51,13 @@ const NavButton = styled.button`
     }
 `;
 
-export const Header = ({ setCurrentMonth }) => {
+export const Header = () => {
     const [state, dispatch] = useContext(StoreContext);
     const { currentDate } = state;
     const dateFormat = "MMMM yyyy";
 
     const nextMonth = () => {
         const nextMonth = addMonths(currentDate, 1);
-        setCurrentMonth(nextMonth);
         dispatch({
             type: "CHANGE_MONTH",
             payload: nextMonth,
@@ -67,7 +66,6 @@ export const Header = ({ setCurrentMonth }) => {
 
     const prevMonth = () => {
         const prevMonth = subMonths(currentDate, 1);
-        setCurrentMonth(prevMonth);
         dispatch({
             type: "CHANGE_MONTH",
             payload: prevMonth,
@@ -76,7 +74,6 @@ export const Header = ({ setCurrentMonth }) => {
 
     const currMonth = () => {
         const currentMonth = new Date();
-        setCurrentMonth(currentMonth);
         dispatch({
             type: "CHANGE_MONTH",
             payload: currentMonth,

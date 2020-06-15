@@ -8,8 +8,6 @@ import { setEventsToLocalStorage } from "../../utils";
 
 export const Calendar = () => {
     const [state] = useContext(StoreContext);
-    const { currentDate: curMonth } = state;
-    const [currentMonth, setCurrentMonth] = useState(curMonth);
 
     useEffect(() => {
         setEventsToLocalStorage(state.events);
@@ -17,9 +15,9 @@ export const Calendar = () => {
 
     return (
         <>
-            <Header currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
-            <Body currentMonth={currentMonth} />
-            <Footer currentMonth={currentMonth} />
+            <Header />
+            <Body />
+            <Footer />
         </>
     );
 };
