@@ -4,7 +4,7 @@ React events calendar main points:
 
 - React hooks + context - `useReducer`, `createContext`, `useMemo`, `useEffect`, `useState`;
 - `CRUD` for events;
-- Store events to `LocalStorage`
+- Store events to `localStorage`
 
 ![Screenshot](./placeholder.png)
 
