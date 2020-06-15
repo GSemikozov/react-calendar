@@ -1,5 +1,11 @@
 # React-calendar
 
+React events calendar main points: 
+
+- `CRUD` for events;
+- React hooks + context - `useReducer`, `createContext`, `useMemo`, `useEffect`, `useState`;
+- Store events to `LocalStorage`
+
 ![Screenshot](./placeholder.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
