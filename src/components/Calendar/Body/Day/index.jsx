@@ -81,8 +81,9 @@ const StyledDay = styled.div`
 
 const DayNumber = styled.span`
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
+    line-height: 24px;
     padding: 4px;
     border-radius: 50%;
     text-align: center;
